@@ -1,0 +1,16 @@
+[
+	{
+		"id": 1,
+		"firstName": "John",
+		"lastName": "Doe",
+		"email": "jd2@email.com",
+		"age": 25,
+		"cours": [
+			"Node.js",
+			"JavaScript",
+			"HTML",
+			"CSS"
+		],
+		"password": "77d464f8c2b19182bb5bfb587583eca8eb5c45014df3ed8ebc777ec36e6189aa718d33307d1ac70c4065f78a58902259b1b44622093795f4ea8b1ee0b760f2bb"
+	}
+]
