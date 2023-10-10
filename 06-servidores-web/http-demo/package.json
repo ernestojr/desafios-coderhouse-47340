@@ -1,0 +1,17 @@
+{
+  "name": "http-demo",
+  "version": "0.0.1",
+  "description": "Esta es una prueba del modulo nativo http.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "http",
+    "backend",
+    "javascript",
+    "nodemon"
+  ],
+  "author": "Coder House",
+  "license": "MIT"
+}
