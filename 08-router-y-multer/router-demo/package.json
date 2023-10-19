@@ -1,0 +1,19 @@
+{
+  "name": "router-demo",
+  "version": "0.0.1",
+  "description": "Esta es una prueba de router en express js",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [
+    "router",
+    "express"
+  ],
+  "author": "Coder House",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
