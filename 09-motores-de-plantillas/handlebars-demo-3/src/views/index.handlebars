@@ -1,0 +1,23 @@
+<div>
+  <h1>Datos personales 😎</h1>
+  <p><strong>Nombre</strong>: {{user.firstName}}</p>
+  <p><strong>Apellido</strong>: {{user.lastName}}</p>
+  <p><strong>Edad</strong>: {{user.age}}</p>
+  <p><strong>Correo</strong>: {{user.email}}</p>
+</div>
+<hr/>
+<div>
+  {{#if isAdmin}}
+  <h1>Lista de productos</h1>
+    {{#each foods}}
+      <div>
+        <p><strong>Nombre</strong>: {{this.name}}</p>
+        <p><strong>Precio</strong>: {{this.price}}</p>
+        <hr/>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No tienes permiso para ver la lista de productos 😨</p>
+  {{/if}}
+</div>
+<script src="js/script.js"></script>r

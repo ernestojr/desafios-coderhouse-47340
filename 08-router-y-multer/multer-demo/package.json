@@ -1,0 +1,22 @@
+{
+  "name": "activity-01",
+  "version": "0.0.1",
+  "description": "Esta es una prueba de router en express js",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [
+    "router",
+    "express"
+  ],
+  "author": "Coder House",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.1"
+  }
+}
