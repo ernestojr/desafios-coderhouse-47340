@@ -1,0 +1,23 @@
+<h1>Estudiantes 😁</h1>
+<article>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Correo</th>
+      <th>Curso</th>
+      <th>Calificación</th>
+    </tr>
+    {{#each students}}
+      <tr>
+        <td>{{this.firstName}}</td>
+        <td>{{this.lastName}}</td>
+        <td>{{this.age}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.course}}</td>
+        <td>{{this.grade}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</article>
