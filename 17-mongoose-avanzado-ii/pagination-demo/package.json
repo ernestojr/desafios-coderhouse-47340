@@ -1,0 +1,21 @@
+{
+  "name": "aggregation-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.0.1",
+    "mongoose-paginate-v2": "^1.7.31"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
