@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import UserModel from './models/user.model.js';
 
 const test = async () => {
-  const URI = 'mongodb+srv://developer:EP2dJ1E10aQmWh3H@cluster0.wzpvdnu.mongodb.net/ecommerce';
+  const URI = 'mongodb://localhost:27017/ecommerce';
   try {
     await mongoose.connect(URI);
     console.log('DB conectada con exito 😁');

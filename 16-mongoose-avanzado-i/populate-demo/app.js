@@ -4,7 +4,7 @@ import CourseModel from './models/course.model.js';
 import StudentModel from './models/student.model.js';
 
 const test = async () => {
-  const URI = 'mongodb+srv://developer:EP2dJ1E10aQmWh3H@cluster0.wzpvdnu.mongodb.net/school';
+  const URI = 'mongodb://localhost:27017/school';
   try {
     await mongoose.connect(URI);
     console.log('DB conectada con exito 😁');
