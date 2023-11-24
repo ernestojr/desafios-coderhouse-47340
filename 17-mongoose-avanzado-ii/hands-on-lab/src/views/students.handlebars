@@ -1,0 +1,27 @@
+<h1>Lista de estudiantes</h1>
+
+<article>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Calificación</th>
+      <th>Grupo</th>
+    </tr>
+    <tbody>
+      {{#each payload}}
+        <tr>
+          <td>{{this.first_name}}</td>
+          <td>{{this.last_name}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.grade}}</td>
+          <td>{{this.group}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <p>Página actual: {{page}}</p>
+  <a href="{{prevLink}}" role="button" {{#unless hasPrevPage}}disabled{{/unless}} >Anterior</a>
+  <a href="{{nextLink}}" role="button" {{#unless hasNextPage}}disabled{{/unless}} >Siguiente</a>
+</article>

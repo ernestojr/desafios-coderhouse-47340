@@ -12,7 +12,10 @@
   "author": "Coder House",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "mongoose": "^8.0.1",
+    "mongoose-paginate-v2": "^1.7.31"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
