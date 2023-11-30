@@ -53,7 +53,7 @@ const data = [
   },
 ];
 
-const URI = 'mongodb+srv://developer:QmSQ489uyGo2WqJk@cluster0.beaz15s.mongodb.net/pizzeria?retryWrites=true&w=majority';
+const URI = 'mongodb://localhost:27017/pizzeria?retryWrites=true&w=majority';
 
 const insertData = async () => {
   await OrderModel.insertMany(data);

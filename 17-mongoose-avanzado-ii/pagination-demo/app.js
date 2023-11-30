@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 import StudentModel from './models/student.model.js';
 
-const URI = 'mongodb+srv://developer:QmSQ489uyGo2WqJk@cluster0.beaz15s.mongodb.net/school?retryWrites=true&w=majority';
+const URI = 'mongodb://localhost:27017/school?retryWrites=true&w=majority';
 
 
 const query = async () => {

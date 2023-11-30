@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const URI = 'mongodb+srv://developer:QmSQ489uyGo2WqJk@cluster0.beaz15s.mongodb.net/school';
+const URI = 'mongodb://localhost:27017/school';
 
 export const init = async () => {
   try {

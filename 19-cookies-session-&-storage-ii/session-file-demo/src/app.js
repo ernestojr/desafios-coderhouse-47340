@@ -1,12 +1,25 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
+import sessions from 'express-session';
+import FileStorage from 'session-file-store';
 import path from 'path';
 
-import indexRouter from './routers/views/index.router.js';
-import usersRouter from './routers/api/users.router.js';
+import indexRouter from './routers/index.router.js';
+import usersRouter from './routers/users.router.js';
 import { __dirname } from './utils.js';
 
 const app = express();
+
+const SESSION_SECRET = '|7@3BBY5jH:@zFQIg_v47HkKP5S#p&Uc';
+
+const fileStorage = FileStorage(sessions);
+
+app.use(sessions({
+  store: new fileStorage({ path: path.join(__dirname, 'sessions'), ttl: 100, retries: 0 }),
+  secret: SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
