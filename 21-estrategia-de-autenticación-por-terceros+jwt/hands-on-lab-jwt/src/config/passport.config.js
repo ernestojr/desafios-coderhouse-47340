@@ -1,8 +1,9 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as GithubStrategy } from 'passport-github2';
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import UserModel from '../models/user.model.js';
-import { createHash, isValidPassword } from '../utils.js';
+import { createHash, isValidPassword, JWT_SECRET } from '../utils.js';
 
 export const init = () => {
   const registerOpts = {
@@ -74,12 +75,20 @@ export const init = () => {
     done(null, newUser);
   }));
 
-  passport.serializeUser((user, done) => {
-    done(null, user._id);
-  });
+  const cookieExtractor = (req) => {
+    let token = null;
+    if (req && req.cookies) {
+      token = req.cookies['access_token'];
+    }
+    console.log('token', token);
+    return token;
+  }
 
-  passport.deserializeUser(async (uid, done) => { // inflar la session
-    const user = await UserModel.findById(uid);
-    done(null, user);
-  });
+  passport.use('jwt', new JwtStrategy({
+    secretOrKey: JWT_SECRET,
+    jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
+  }, (payload, done) => {
+    console.log('payload', payload);
+    done(null, payload);
+  }))
 } 
