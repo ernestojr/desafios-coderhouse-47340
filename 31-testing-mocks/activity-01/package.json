@@ -1,0 +1,14 @@
+{
+  "name": "activity-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "test": "node ./tests/app.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
