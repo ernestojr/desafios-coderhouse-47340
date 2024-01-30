@@ -6,6 +6,8 @@ import indexRouter from './routers/index.router.js';
 
 const app = express();
 
+console.log('Here into app.js');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));

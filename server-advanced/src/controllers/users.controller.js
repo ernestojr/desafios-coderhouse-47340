@@ -1,9 +1,9 @@
 import UsersService from '../services/users.service.js';
+import { getFilterAndOpts } from '../utils/utils.js';
 
 export default class UsersController {
   get(query = {}) {
-    const filter = {};
-    const opts = {};
+    const { filter, opts } = getFilterAndOpts(query);
     return UsersService.get(filter, opts);
   }
 
