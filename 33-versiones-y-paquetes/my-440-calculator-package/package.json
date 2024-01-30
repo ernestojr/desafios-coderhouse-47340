@@ -1,0 +1,19 @@
+{
+  "name": "my-440-calculator-package",
+  "version": "1.0.0",
+  "description": "Esta es una lib de demostracion del curso de CH 47340",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernestorojasteacher/my-440-calculator-package"
+  },
+  "bugs": {
+    "url": "https://github.com/ernestorojasteacher/my-440-calculator-package/issues"
+  },
+  "keywords": ["calculator", "math", "addition", "subtraction", "multiplication", "division"],
+  "author": "Ernesto Rojas <ernesto20145@gmail.com>",
+  "license": "MIT"
+}
