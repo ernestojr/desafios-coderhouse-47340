@@ -1,71 +1,54 @@
 import { Router } from 'express';
-import { authToken, authRole } from '../../middlewares/authentication.middleware.js';
-import { bodyUsersValidator}  from '../../middlewares/body-users-validator.middleware.js';
-import { emailUserValidator } from '../../middlewares/email-user-validator.middleware.js';
-import UserController from '../../controllers/users.controller.js';
+import UserModel from '../../models/user.model.js';
 
 const router = Router();
 
-router.get('/users',
-  authToken,
-  authRole(['admin']),
-  async (req, res, next) => {
+router.get('/users', async (req, res, next) => {
   try {
-    const users = await UserController.get({});
+    const users = await UserModel.find({});
     res.status(200).json(users);
   } catch (error) {
     next(error);
   }
 });
 
-router.get('/users/:uid',
-  authToken,
-  authRole(['admin']),
-  async (req, res, next) => {
+router.get('/users/:uid', async (req, res, next) => {
   try {
     const { params: { uid } } = req;
-    const user = await UserController.getById(uid);
+    const user = await UserModel.findById(uid);
+    if (!user) {
+      return res.status(401).json({ message: `User id ${uid} not found 😨.` });
+    }
     res.status(200).json(user);
   } catch (error) {
     next(error);
   }
 });
 
-router.post('/users/',
-  authToken,
-  authRole(['admin']),
-  bodyUsersValidator,
-  emailUserValidator,
-  async (req, res, next) => {
+router.post('/users/', async (req, res, next) => {
   try {
     const { body } = req;
-    const user = await UserController.create(body);
+    const user = await UserModel.create(body);
     res.status(201).json(user);
   } catch (error) {
     next(error);
   }
 });
 
-router.put('/users/:uid',
-  authToken,
-  authRole(['admin']),
-  async (req, res, next) => {
+router.put('/users/:uid', async (req, res, next) => {
   try {
     const { body, params: { uid } } = req;
-    await UserController.updateById(uid, body);
+    await UserModel.updateOne({ _id: uid }, { $set: body });
     res.status(204).end();
   } catch (error) {
     next(error);
   }
 });
 
-router.delete('/users/:uid',
-  authToken,
-  authRole(['admin']),
-  async (req, res, next) => {
+router.delete('/users/:uid', async (req, res, next) => {
   try {
     const { params: { uid } } = req;
-    await UserController.deleteById(uid);
+    await UserModel.deleteOne({ _id: uid });
     res.status(204).end();
   } catch (error) {
     next(error);
