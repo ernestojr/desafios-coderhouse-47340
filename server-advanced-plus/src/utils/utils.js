@@ -29,12 +29,11 @@ export const createPasswordHash = (password) => bcrypt.hash(password, bcrypt.gen
 
 export const verifyPassword = (password, user) => bcrypt.compare(password, user.password);
 
-export const createToken = (user) => {
+export const createToken = (user, typeToken = 'auth') => {
   const {
     _id,
     first_name,
     last_name,
-    dni,
     email,
     role,
   } = user;
@@ -43,9 +42,9 @@ export const createToken = (user) => {
     id: _id,
     first_name,
     last_name,
-    dni,
     email,
     role,
+    typeToken,
   };
 
   return jwt.sign(payload, config.jwtSecret, { expiresIn: '30m' });

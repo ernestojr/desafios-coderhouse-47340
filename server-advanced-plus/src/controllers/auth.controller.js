@@ -12,7 +12,7 @@ export default class AuthController {
 
   static async login(data) {
     const { email, password } = data;
-    const [user] = await UsersService.get({ email });
+    const [user] = await UsersService.getRaw({ email });
     if (!user) {
       throw new UnauthorizedException('Invalid credentials 😨.');
     }

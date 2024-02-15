@@ -5,6 +5,10 @@ export default class UsersService {
     return userRepository.get(filter, opts);
   }
 
+  static getRaw(filter = {}, opts = {}) {
+    return userRepository.getRaw(filter, opts);
+  }
+
   static create(data) {
     return userRepository.create(data);
   }

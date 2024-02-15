@@ -1,9 +1,9 @@
 import UserDao from './user.dao.js';
 
 export default class UserFileDao extends UserDao {
-  get(filter = {}, opts = {}) { throw new Error('Not implement 😱.'); }
-  create(data) { throw new Error('Not implement 😱.'); }
-  getById(uid) { throw new Error('Not implement 😱.'); }
-  updateById(uid, data) { throw new Error('Not implement 😱.'); }
-  deleteById(uid) { throw new Error('Not implement 😱.'); }
+  static get(filter = {}, opts = {}) { throw new Error('Method not implemented 😱.'); }
+  static create(data) { throw new Error('Method not implemented 😱.'); }
+  static getById(uid) { throw new Error('Method not implemented 😱.'); }
+  static updateById(uid, data) { throw new Error('Method not implemented 😱.'); }
+  static deleteById(uid) { throw new Error('Method not implemented 😱.'); }
 }
