@@ -37,8 +37,8 @@ router.get('/auth/current',
   authToken,
   async (req, res, next) => {
   try {
-    const { user: { _id } } = req;
-    const user = await UsersController.getById(_id);
+    const { user: { id } } = req;
+    const user = await UsersController.getById(id);
     res.status(200).json(user);
   } catch (error) {
     next(error);
