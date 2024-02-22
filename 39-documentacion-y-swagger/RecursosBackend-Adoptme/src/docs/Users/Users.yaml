@@ -1,0 +1,136 @@
+paths:
+  /api/users:
+    get:
+      summary: Listar usuarios
+      tags:
+        - Users
+      responses:
+        200:
+          description: Los usuarios fueron obtenidos con exitosamente desde la base de datos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        500:
+          description: Error interno del servidor.
+
+  /api/users/{uid}:
+    get:
+      summary: Obtener usuario por su identificador.
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: uid
+          required: true
+          description: Identificador del usuario a buscar.
+          schema:
+            type: string
+      responses:
+        200:
+          description: Usuario obtenido correctamente desde la base de datos.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Estado de la respuesta
+                    example: success
+                  payload:
+                    $ref: '#/components/schemas/User'
+        404:
+          description: Usuario no encontrado.
+        500:
+          description: Error interno del servidor.
+    put:
+      summary: Actualizar un usuario por su identificador.
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: uid
+          required: true
+          description: Identificador del usuario a buscar.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/updateUser'
+      responses:
+        200:
+          description: Usuario actualizado correctamente en la base de datos.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Estado de la respuesta
+                    example: success
+                  message:
+                    type: string
+                    description: Mensaje de respuesta.
+                    example: success
+        404:
+          description: Usuario no encontrado.
+        500:
+          description: Error interno del servidor.
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id del usuario generado por la base de datos.
+        first_name:
+          type: string
+          description: Nombre del usuario.
+        last_name:
+          type: string
+          description: Apellido del usuario.
+        email:
+          type: string
+          description: Correo electrónico del usuario.
+        password:
+          type: string
+          description: Contrase del usuario.
+        role:
+          type: string
+          description: Rol del usuario.
+        pets:
+          type: array
+          description: Conjunto de mascotas adoptadas del usuario.
+      example:
+        _id: 60f0a9c9e6b3c2b4b8a6b2a0
+        first_name: Juan
+        last_name: Perez
+        email: jp@email.com
+        password: "123456"
+        role: user
+        pets: []
+  requestBodies:
+    updateUser:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario.
+        last_name:
+          type: string
+          description: Apellido del usuario.
+        email:
+          type: string
+          description: Correo electrónico del usuario.
+      example:
+        first_name: Juan
+        last_name: Perez
+        email: jp@email.com
