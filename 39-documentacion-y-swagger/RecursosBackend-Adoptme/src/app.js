@@ -14,7 +14,7 @@ import __dirname from './utils/index.js';
 
 const app = express();
 const PORT = process.env.PORT||8080;
-const connection = mongoose.connect('mongodb+srv://developer:QmSQ489uyGo2WqJk@cluster0.beaz15s.mongodb.net/ecommerce')
+const connection = mongoose.connect('mongodb uri')
 
 app.use(express.json());
 app.use(cookieParser());
