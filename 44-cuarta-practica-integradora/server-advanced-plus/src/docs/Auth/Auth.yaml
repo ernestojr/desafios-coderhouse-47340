@@ -1,0 +1,81 @@
+paths:
+  /api/auth/register:
+    post:
+      summary: Registro de usuario
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/registerBody'
+      responses:
+        201:
+          description: Usuario registrado con éxito.
+        400:
+          description: Datos inválidos.
+  /api/auth/login:
+    post:
+      summary: Login de usuario
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/loginBody'
+      responses:
+        200:
+          description: Usuario logueado con éxito.
+        401:
+          description: Credenciales inválidas.
+  /api/auth/current:
+    get:
+      summary: Obtener el usuario actualmente logueado.
+      tags:
+        - Auth
+      responses:
+        200:
+          description: Usuario obtenido con éxito.
+        401:
+          description: No autorizado.
+components:
+  requestBodies:
+    registerBody:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario.
+        last_name:
+          type: string
+          description: Apellido del usuario.
+        email:
+          type: string
+          description: Correo electónico del usuario.
+        password:
+          type: string
+          description: Contraseña del usuario.
+        birthdate:
+          type: string
+          description: Fecha de nacimiento del usuario (DD-MM-YYYY | YYYY-MM-DD).
+      example:
+        first_name: Jose
+        last_name: Medina
+        email: jm@mail.com
+        password: qwerty
+        birthdate: 12-03-1991
+    loginBody:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Correo electónico del usuario.
+        password:
+          type: string
+          description: Contraseña del usuario.
+      example:
+        email: jm@mail.com
+        password: qwerty
