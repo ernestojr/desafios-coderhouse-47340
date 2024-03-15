@@ -5,6 +5,8 @@ export default class UserDto {
     this.last_name = data.last_name;
     this.email = data.email;
     this.birthdate = data.birthdate;
+    this.avatar = data.avatar ? `http://localhost:8080/images/avatares/${data.avatar}`: null;
+    this.document = data.document ? `http://localhost:8080/documents/${data.document}`: null;
     this.role = data.role;
   }
 }

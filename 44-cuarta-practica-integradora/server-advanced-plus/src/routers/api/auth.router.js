@@ -4,6 +4,7 @@ import { emailUserValidator } from '../../middlewares/email-user-validator.middl
 import AuthController from '../../controllers/auth.controller.js';
 import UsersController from '../../controllers/users.controller.js';
 import { authToken } from '../../middlewares/authentication.middleware.js';
+import { uploader } from '../../utils/utils.js';
 
 const router = Router();
 
@@ -44,5 +45,19 @@ router.get('/auth/current',
     next(error);
   }
 });
+
+router.post('/auth/current/upload/:typeFile',
+  authToken,
+  uploader.single('file'),
+  async (req, res, next) => {
+    try {
+      const { user: { id }, file, params: { typeFile } } = req;
+      await UsersController.uploadFile(id, typeFile, file);
+      res.status(204).end();
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 export default router;

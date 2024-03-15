@@ -18,12 +18,11 @@ app.use(addLogger);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 app.engine('handlebars', handlebars.engine());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
-logger.info(`path: ${path.join(__dirname, '..', 'docs', '**', '*.yaml')}`);
 const specs = swaggerJsDoc({
   definition: {
     openapi: '3.0.1',

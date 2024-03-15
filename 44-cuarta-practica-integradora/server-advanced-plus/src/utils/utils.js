@@ -1,9 +1,12 @@
 import path from 'path';
+import fs from 'fs';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { fileURLToPath } from 'url';
+import multer from 'multer';
 
 import config from '../config/config.js';
+import { InvalidDataException } from './exception.js';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -60,3 +63,28 @@ export const varifyToken = (token) => {
     });
   });
 };
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    const { params: { typeFile } } = req;
+    let folderPath = null;
+    switch (typeFile) {
+      case 'avatar':
+        folderPath = path.resolve(__dirname, '..', '..', 'public', 'images', 'avatares');
+        break;
+      case 'document':
+        folderPath = path.resolve(__dirname, '..', '..', 'public', 'documents');
+        break;
+      default:
+        return callback(new InvalidDataException('Ivalid type file 😱'));
+    }
+    fs.mkdirSync(folderPath, { recursive: true });
+    callback(null, folderPath);
+  },
+  filename: (req, file, callback) => {
+    const { user: { id } } = req;
+    callback(null, `${id}_${file.originalname}`);
+  },
+});
+
+export const uploader = multer({ storage });
